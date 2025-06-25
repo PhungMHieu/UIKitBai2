@@ -39,9 +39,9 @@ class InformationVC: UIViewController {
         }
         validateInput()
         for textField in [firstName, lastName, height, weight]{
-            textField?.addTarget(self, action: #selector(textFieldChanged(_:)), for:.editingChanged)
+            textField?.addTarget(self, action: #selector(textFieldChanged), for:.editingChanged)
         }
-        gender.addTarget(self, action: #selector(textFieldChanged(_:)), for:.valueChanged)
+        gender.addTarget(self, action: #selector(textFieldChanged), for:.valueChanged)
         //        validateInput()
         // Do any additional setup after loading the view.
     }
@@ -55,13 +55,11 @@ class InformationVC: UIViewController {
         let weight = weight.text ?? ""
         let genderIndex = gender.selectedSegmentIndex
         let genderTitle = gender.titleForSegment(at: genderIndex) ?? ""
-        if(!firstName.isEmpty || !lastName.isEmpty || !height.isEmpty ||
-           !weight.isEmpty || !genderTitle.isEmpty){
-            changColorBtn.backgroundColor = .green
-            print("mau xanh la")
+        if(!firstName.isEmpty && !lastName.isEmpty && !height.isEmpty &&
+           !weight.isEmpty && !genderTitle.isEmpty){
+            changColorBtn.backgroundColor = .primary
         }else{
             changColorBtn.backgroundColor = .neutral3
-            print("mau hong")
         }
 
     }
