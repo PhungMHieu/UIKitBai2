@@ -6,9 +6,9 @@
 //
 
 import UIKit
-protocol InformationDelegate: AnyObject{
-    func update(_ result: Information)
-}
+//protocol InformationDelegate: AnyObject{
+//    func update(_ result: Information)
+//}
 class InformationVC: UIViewController {
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var height: UITextField!
@@ -21,7 +21,8 @@ class InformationVC: UIViewController {
     var heightText: String = ""
     var weightText: String = ""
     var genderText: String = ""
-    weak var delegate: InformationDelegate?
+//    weak var delegate: InformationDelegate?
+    var onChangeResult: ((Information)->Void)?
 //    @IBOutlet weak var firstName: UIView!
 //    @IBOutlet weak var updateButton: UIButton!
     override func viewDidLoad() {
@@ -79,10 +80,11 @@ class InformationVC: UIViewController {
             print("da unwraped duoc roi")
             let heightValueInMeters = heightValue / 100
             let bmi = Double(weightValue/(heightValueInMeters * heightValueInMeters))
-            let info = Information(fullName: fullName, gender: genderTitle, height: heightValue, weight: weightValue, bmi: bmi)
+            let info = Information(firstName: firstName, lastName: lastName, gender: genderTitle, height: heightValue, weight: weightValue, bmi: bmi, fullName: fullName)
             print(info.height)
             print(info.bmi)
-            delegate?.update(info)
+//            delegate?.update(info)
+            onChangeResult?(info)
             print(info)
             navigationController?.popViewController(animated: true)
         }

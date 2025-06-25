@@ -15,6 +15,8 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var bmi: UILabel!
     @IBOutlet weak var UpdateButton: UIButton!
     @IBOutlet weak var fullName: UILabel!
+    var firstName:String = ""
+    var lastName:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
@@ -29,6 +31,7 @@ class ProfileVC: UIViewController {
         backItem.title = "Quay lại"
 //            backItem.tintColor = .red  // tuỳ chỉnh màu
         navigationItem.backBarButtonItem = backItem
+//        validateInput()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -58,11 +61,23 @@ class ProfileVC: UIViewController {
     @IBAction func AddButton(_ sender: UIButton) {
 //        let informationVC = InformationVC()
         let informationVC = InformationVC(nibName: "InformationVC", bundle: nil)
-        informationVC.delegate = self
+//        informationVC.delegate = self
+        
+        informationVC.onChangeResult = { [weak self] newResult in
+            self?.gender.text = newResult.gender
+            self?.fullName.text = newResult.fullName
+            self?.height.text = String(newResult.height)
+            self?.weight.text = String(newResult.weight)
+            self?.bmi.text = String(Int(newResult.bmi))
+            print("first name la \(newResult.firstName)")
+            print("last name la \(newResult.lastName)")
+            self?.firstName = newResult.firstName
+            self?.lastName = newResult.lastName
+        }
         if(validateInput()){
 //            print(fullName.text ?? "Khong co test")
-            informationVC.firstNameText = fullName.text ?? ""
-            informationVC.lastNameText = fullName.text ?? ""
+            informationVC.firstNameText = firstName
+            informationVC.lastNameText = lastName
             informationVC.genderText = gender.text ?? ""
             informationVC.heightText = height.text ?? ""
             informationVC.weightText = weight.text ?? ""
@@ -92,14 +107,14 @@ class ProfileVC: UIViewController {
     */
 
 }
-extension ProfileVC: InformationDelegate{
-    func update(_ result: Information) {
-        print("da nhan duoc thong tin update")
-        fullName.text = result.fullName
-        gender.text = result.gender
-//        age.text = String(result.weight)
-        height.text = String(result.height)
-        weight.text = String(result.weight)
-        bmi.text = String(Int(result.bmi))
-    }
-}
+//extension ProfileVC: InformationDelegate{
+//    func update(_ result: Information) {
+//        print("da nhan duoc thong tin update")
+//        fullName.text = result.fullName
+//        gender.text = result.gender
+////        age.text = String(result.weight)
+//        height.text = String(result.height)
+//        weight.text = String(result.weight)
+//        bmi.text = String(Int(result.bmi))
+//    }
+//}
