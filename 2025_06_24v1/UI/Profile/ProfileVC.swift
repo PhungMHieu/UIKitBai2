@@ -62,6 +62,10 @@ class ProfileVC: UIViewController {
         if(validateInput()){
 //            print(fullName.text ?? "Khong co test")
             informationVC.firstNameText = fullName.text ?? ""
+            informationVC.lastNameText = fullName.text ?? ""
+            informationVC.genderText = gender.text ?? ""
+            informationVC.heightText = height.text ?? ""
+            informationVC.weightText = weight.text ?? ""
             print("\(informationVC.firstNameText) đã được cập nhật")
 //            informationVC.lastName.text = fullName.text ?? ""
 //            for index in 0..<informationVC.gender.numberOfSegments{

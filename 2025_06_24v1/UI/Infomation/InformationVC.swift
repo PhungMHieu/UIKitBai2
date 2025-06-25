@@ -27,19 +27,26 @@ class InformationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Information"
-        
+        firstName.text = firstNameText
+        height.text = heightText
+        weight.text = weightText
+        lastName.text = lastNameText
+        for i in 0..<gender.numberOfSegments{
+            if(gender.titleForSegment(at: i) == genderText){
+                gender.selectedSegmentIndex = i
+                break
+            }
+        }
+        validateInput()
+        for textField in [firstName, lastName, height, weight]{
+            textField?.addTarget(self, action: #selector(textFieldChanged(_:)), for:.editingChanged)
+        }
+        gender.addTarget(self, action: #selector(textFieldChanged(_:)), for:.valueChanged)
         //        validateInput()
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
-//        print("")
-        validateInput()
-        for textField in [firstName, lastName, height, weight]{
-            textField?.addTarget(self, action: #selector(textFieldChanged), for:.editingChanged)
-        }
-        gender.addTarget(self, action: #selector(textFieldChanged), for:.valueChanged)
-        firstName.text = firstNameText
-        
+        //        print("")
     }
     func validateInput(){
         let firstName = firstName.text ?? ""
@@ -48,11 +55,13 @@ class InformationVC: UIViewController {
         let weight = weight.text ?? ""
         let genderIndex = gender.selectedSegmentIndex
         let genderTitle = gender.titleForSegment(at: genderIndex) ?? ""
-        if(!firstName.isEmpty && !lastName.isEmpty && !height.isEmpty &&
-           !weight.isEmpty && !genderTitle.isEmpty){
-            changColorBtn.backgroundColor = .primary
+        if(!firstName.isEmpty || !lastName.isEmpty || !height.isEmpty ||
+           !weight.isEmpty || !genderTitle.isEmpty){
+            changColorBtn.backgroundColor = .green
+            print("mau xanh la")
         }else{
             changColorBtn.backgroundColor = .neutral3
+            print("mau hong")
         }
 
     }
