@@ -15,7 +15,7 @@ class TestVCViewController: UIViewController {
         super.viewDidLoad()
 //        let informationV = InformationV()
         
-        lastNamev.configure(label: "last name", placeholder: "Enter last name")
+        lastNamev.configure(label: "Last name", placeholder: "Enter last name")
         // Do any additional setup after loading the view.
     }
 

@@ -31,8 +31,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window.makeKeyAndVisible()
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let vc = ProfileVC()
+//        let vc = ProfileVC()
 //        let vc = TestVCViewController()
+        let vc = ListUserVC()
         let navi = UINavigationController(rootViewController: vc)
         window.rootViewController = navi
         self.window = window
