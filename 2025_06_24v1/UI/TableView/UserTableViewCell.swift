@@ -6,9 +6,15 @@
 //
 
 import UIKit
-
+protocol ListUserDelegate: AnyObject {
+    func next(in cell: UserTableViewCell)
+}
 class UserTableViewCell: UITableViewCell {
 
+    weak var delegate: ListUserDelegate?
+    @IBAction func nextBtn(_ sender: UIButton) {
+        delegate?.next(in: self)
+    }
     @IBOutlet weak var height: UserMeasureV!
     @IBOutlet weak var weight: UserMeasureV!
     @IBOutlet weak var name: UILabel!
@@ -25,5 +31,9 @@ class UserTableViewCell: UITableViewCell {
 //        weight.config(data: userMeasureWeight)
         // Configure the view for the selected state
     }
-    
+    func configre(data: Information){
+        height.res.text = "\(data.height)"
+        weight.res.text = "\(data.weight)"
+        name.text = "\(data.fullName)"
+    }
 }

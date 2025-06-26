@@ -17,6 +17,12 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var fullName: UILabel!
     var firstName:String = ""
     var lastName:String = ""
+    var fullNameText : String = ""
+    var heightText : String = ""
+    var weightText : String = ""
+    var genderText : String = ""
+    var ageText : String = ""
+    var bmiText : String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
@@ -28,6 +34,13 @@ class ProfileVC: UIViewController {
         
 //        informationVC?.up
         let backItem = UIBarButtonItem()
+        gender.text = genderText
+        age.text = ageText
+        height.text = heightText
+        weight.text = weightText
+        fullName.text = fullNameText
+        bmi.text = bmiText
+        
         backItem.title = "Quay lại"
 //            backItem.tintColor = .red  // tuỳ chỉnh màu
         navigationItem.backBarButtonItem = backItem
@@ -105,7 +118,13 @@ class ProfileVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func configure(data: Information){
+        fullNameText = data.fullName
+        weightText = String(data.weight)
+        heightText = String(data.height)
+        bmiText = String(Int(data.bmi))
+        genderText = data.gender
+    }
 }
 //extension ProfileVC: InformationDelegate{
 //    func update(_ result: Information) {

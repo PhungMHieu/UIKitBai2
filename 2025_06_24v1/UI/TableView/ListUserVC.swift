@@ -14,10 +14,12 @@ class ListUserVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listUser.dequeueReusableCell(withIdentifier: "UserTableViewCell") as! UserTableViewCell
-        cell.name.text = "JohnWick"
-        cell.height.title.text = "H"
-        cell.height.res.text = "180"
-        cell.weight.res.text = "80"
+//        cell.name.text = "JohnWick"
+//        cell.height.title.text = "H:"
+//        cell.height.res.text = "180"
+//        cell.weight.res.text = "80"
+        cell.configre(data: data[indexPath.row])
+        cell.delegate = self
 //        cell.height.res.text = String(data[indexPath.row].height)
 //        cell.weight.res.text = String(data[indexPath.row].weight)
 //        UserMeasure userMeasure = UserMeasure(title: <#T##String#>, res: <#T##String#>)
@@ -44,8 +46,21 @@ class ListUserVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         listUser.register(nib, forCellReuseIdentifier:  "UserTableViewCell")
         listUser.delegate = self
         listUser.dataSource = self
+        print(self.data.count)
         // Do any additional setup after loading the view.
     }
     
     
+}
+extension ListUserVC : ListUserDelegate{
+    func next(in cell : UserTableViewCell){
+        if let indexPath = listUser.indexPath(for: cell){
+            let item = data[indexPath.row]
+            print("\(item.fullName)")
+            let profileVC = ProfileVC()
+            
+            profileVC.configure(data: item)
+            navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
 }
