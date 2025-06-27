@@ -25,63 +25,74 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZFh-qU-DXC" userLabel="NameStackView">
-                    <rect key="frame" x="4.6666666666666572" y="160" width="384" height="68"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="AIn-Cn-McM">
+                    <rect key="frame" x="24.666666666666657" y="160" width="344" height="280"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBe-gb-2dz" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="186" height="68"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5g-jn-kaT" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
-                            <rect key="frame" x="198" y="0.0" width="186" height="68"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZFh-qU-DXC" userLabel="NameStackView">
+                            <rect key="frame" x="0.0" y="0.0" width="344" height="100"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBe-gb-2dz" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="166" height="100"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5g-jn-kaT" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
+                                    <rect key="frame" x="178" y="0.0" width="166" height="100"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="344" id="Fra-Nw-m4D"/>
+                                <constraint firstAttribute="height" constant="100" id="Uin-G2-yVt"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="uuf-3O-Hv7" userLabel="GenderStackView">
+                            <rect key="frame" x="0.0" y="112" width="344" height="68"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjq-GE-Wbk">
+                                    <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="11"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rBH-FQ-4b5">
+                                    <rect key="frame" x="0.0" y="36" width="343" height="33"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="343" id="AK0-tz-Y90"/>
+                                        <constraint firstAttribute="height" constant="32" id="SuW-mq-7XS"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="Male"/>
+                                        <segment title="Female"/>
+                                    </segments>
+                                </segmentedControl>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="344" id="RbA-Ae-vZM"/>
+                                <constraint firstAttribute="height" constant="68" id="wGg-Hv-e9I"/>
+                            </constraints>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zJQ-gu-Xj8" userLabel="WeightHeightStackView">
+                            <rect key="frame" x="0.0" y="192" width="344" height="88"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RD2-5G-1CI" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="166" height="88"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxT-Ly-DHm" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
+                                    <rect key="frame" x="178" y="0.0" width="166" height="88"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="344" id="E5f-PK-eLM"/>
+                                <constraint firstAttribute="height" constant="88" id="Nt7-G4-EKf"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="384" id="Q0G-Uh-ZZX"/>
-                        <constraint firstAttribute="height" constant="68" id="R1K-8A-o3a"/>
-                    </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="zJQ-gu-Xj8" userLabel="WeightHeightStackView">
-                    <rect key="frame" x="0.0" y="362" width="393" height="68"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RD2-5G-1CI" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="190.66666666666666" height="68"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxT-Ly-DHm" customClass="InformationV" customModule="_025_06_24v1" customModuleProvider="target">
-                            <rect key="frame" x="202.66666666666663" y="0.0" width="190.33333333333337" height="68"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        </view>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="68" id="Qhb-5w-wNx"/>
-                    </constraints>
-                </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="uuf-3O-Hv7" userLabel="GenderStackView">
-                    <rect key="frame" x="4.6666666666666572" y="252.00000000000003" width="384" height="76.333333333333343"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjq-GE-Wbk">
-                            <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="20.333333333333332"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="rBH-FQ-4b5">
-                            <rect key="frame" x="0.0" y="45.333333333333314" width="384" height="32"/>
-                            <segments>
-                                <segment title="Male"/>
-                                <segment title="Female"/>
-                            </segments>
-                        </segmentedControl>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="384" id="uO8-WQ-hXG"/>
-                        <constraint firstItem="rBH-FQ-4b5" firstAttribute="width" secondItem="uuf-3O-Hv7" secondAttribute="width" id="ya1-Rl-VRU"/>
-                    </constraints>
-                </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqb-15-vxl">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqb-15-vxl">
                     <rect key="frame" x="169.33333333333334" y="686.66666666666663" width="54.666666666666657" height="38.333333333333371"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="Add"/>
                     <connections>
@@ -92,15 +103,8 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="Background"/>
             <constraints>
-                <constraint firstItem="zJQ-gu-Xj8" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="8k7-zu-GBW"/>
-                <constraint firstItem="zJQ-gu-Xj8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ml8-3i-7K1"/>
-                <constraint firstItem="uuf-3O-Hv7" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="TAH-Vf-Plc"/>
-                <constraint firstItem="ZFh-qU-DXC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="42" id="VJx-pM-ifP"/>
-                <constraint firstItem="uuf-3O-Hv7" firstAttribute="top" secondItem="ZFh-qU-DXC" secondAttribute="bottom" constant="24" id="gr9-pd-K3T"/>
-                <constraint firstItem="ZFh-qU-DXC" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="mJi-ez-YNI"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gqb-15-vxl" secondAttribute="bottom" constant="59" id="nOa-CY-GaG"/>
-                <constraint firstItem="zJQ-gu-Xj8" firstAttribute="top" secondItem="uuf-3O-Hv7" secondAttribute="bottom" constant="33.666666666666742" id="uvu-9b-AMe"/>
-                <constraint firstItem="gqb-15-vxl" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="y8R-y0-Tjn"/>
+                <constraint firstItem="AIn-Cn-McM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="42" id="Gnc-Mg-7C3"/>
+                <constraint firstItem="AIn-Cn-McM" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aqH-0q-Sx5"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
         </view>

@@ -11,13 +11,14 @@ class ListUserVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
+    var indexPath: IndexPath?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = listUser.dequeueReusableCell(withIdentifier: "UserTableViewCell") as! UserTableViewCell
 //        cell.name.text = "JohnWick"
 //        cell.height.title.text = "H:"
 //        cell.height.res.text = "180"
 //        cell.weight.res.text = "80"
+        self.indexPath = indexPath
         cell.configre(data: data[indexPath.row])
         cell.delegate = self
 //        cell.height.res.text = String(data[indexPath.row].height)
@@ -49,7 +50,10 @@ class ListUserVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
         print(self.data.count)
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        var informationVC = InformationVC()
+        informationVC.delegate = self
+    }
     
 }
 extension ListUserVC : ListUserDelegate{
@@ -57,10 +61,16 @@ extension ListUserVC : ListUserDelegate{
         if let indexPath = listUser.indexPath(for: cell){
             let item = data[indexPath.row]
             print("\(item.fullName)")
+            print("gia tri cua first name va last name se truyền đi \(item.firstName) \(item.lastName)")
             let profileVC = ProfileVC()
-            
+            self.indexPath = indexPath
             profileVC.configure(data: item)
             navigationController?.pushViewController(profileVC, animated: true)
         }
+    }
+}
+extension ListUserVC: InformationDelegate{
+    func update(_ result: Information) {
+        data[indexPath?.row ?? 0]  = result
     }
 }

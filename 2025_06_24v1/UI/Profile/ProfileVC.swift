@@ -6,6 +6,10 @@
 //
 
 import UIKit
+
+//protocol ProfileDelegate: AnyObject{
+//    func didUpdateItem(_ item: Information, at indexPath: IndexPath)
+//}
 class ProfileVC: UIViewController {
 
     @IBOutlet weak var gender: UILabel!
@@ -23,6 +27,8 @@ class ProfileVC: UIViewController {
     var genderText : String = ""
     var ageText : String = ""
     var bmiText : String = ""
+    
+//    weak var delegate: ProfileDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
@@ -74,23 +80,24 @@ class ProfileVC: UIViewController {
     @IBAction func AddButton(_ sender: UIButton) {
 //        let informationVC = InformationVC()
         let informationVC = InformationVC(nibName: "InformationVC", bundle: nil)
-//        informationVC.delegate = self
+        informationVC.delegate = self
         
-        informationVC.onChangeResult = { [weak self] newResult in
-            self?.gender.text = newResult.gender
-            self?.fullName.text = newResult.fullName
-            self?.height.text = String(newResult.height)
-            self?.weight.text = String(newResult.weight)
-            self?.bmi.text = String(Int(newResult.bmi))
-            print("first name la \(newResult.firstName)")
-            print("last name la \(newResult.lastName)")
-            self?.firstName = newResult.firstName
-            self?.lastName = newResult.lastName
-        }
-        if(validateInput()){
+//        informationVC.onChangeResult = { [weak self] newResult in
+//            self?.gender.text = newResult.gender
+//            self?.fullName.text = newResult.fullName
+//            self?.height.text = String(newResult.height)
+//            self?.weight.text = String(newResult.weight)
+//            self?.bmi.text = String(Int(newResult.bmi))
+//            print("first name la \(newResult.firstName)")
+//            print("last name la \(newResult.lastName)")
+//            self?.firstName = newResult.firstName
+//            self?.lastName = newResult.lastName
+//        }
+//        if(validateInput()){
 //            print(fullName.text ?? "Khong co test")
-            informationVC.firstNameText = firstName
-            informationVC.lastNameText = lastName
+        informationVC.firstNameText = self.firstName
+        informationVC.lastNameText = self.lastName
+//        print("giá trị của information ở profileVC \(fullName.text) \(weight.text)")
             informationVC.genderText = gender.text ?? ""
             informationVC.heightText = height.text ?? ""
             informationVC.weightText = weight.text ?? ""
@@ -104,7 +111,7 @@ class ProfileVC: UIViewController {
 //            }
 //            informationVC.height.text = height.text ?? ""
 //            informationVC.weight.text = weight.text ?? ""
-        }
+//        }
         navigationController?.pushViewController(informationVC, animated: true)
     }
     
@@ -119,21 +126,26 @@ class ProfileVC: UIViewController {
     }
     */
     func configure(data: Information){
+        
         fullNameText = data.fullName
+//        print("full name text \(fullNameText)")
         weightText = String(data.weight)
         heightText = String(data.height)
         bmiText = String(Int(data.bmi))
         genderText = data.gender
+        firstName = data.firstName
+        lastName = data.lastName
     }
 }
-//extension ProfileVC: InformationDelegate{
-//    func update(_ result: Information) {
+extension ProfileVC: InformationDelegate{
+    func update(_ result: Information) {
 //        print("da nhan duoc thong tin update")
-//        fullName.text = result.fullName
-//        gender.text = result.gender
-////        age.text = String(result.weight)
-//        height.text = String(result.height)
-//        weight.text = String(result.weight)
-//        bmi.text = String(Int(result.bmi))
-//    }
-//}
+        fullName.text = result.fullName
+        
+        gender.text = result.gender
+//        age.text = String(result.weight)
+        height.text = String(result.height)
+        weight.text = String(result.weight)
+        bmi.text = String(Int(result.bmi))
+    }
+}

@@ -6,9 +6,9 @@
 //
 
 import UIKit
-//protocol InformationDelegate: AnyObject{
-//    func update(_ result: Information)
-//}
+protocol InformationDelegate: AnyObject{
+    func update(_ result: Information)
+}
 class InformationVC: UIViewController {
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var height: UITextField!
@@ -21,8 +21,8 @@ class InformationVC: UIViewController {
     var heightText: String = ""
     var weightText: String = ""
     var genderText: String = ""
-//    weak var delegate: InformationDelegate?
-    var onChangeResult: ((Information)->Void)?
+    weak var delegate: InformationDelegate?
+//    var onChangeResult: ((Information)->Void)?
 //    @IBOutlet weak var firstName: UIView!
 //    @IBOutlet weak var updateButton: UIButton!
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class InformationVC: UIViewController {
         height.text = heightText
         weight.text = weightText
         lastName.text = lastNameText
+        print("Gia tri cua Infomation la \(firstName.text) \(lastName.text)")
         for i in 0..<gender.numberOfSegments{
             if(gender.titleForSegment(at: i) == genderText){
                 gender.selectedSegmentIndex = i
@@ -62,7 +63,6 @@ class InformationVC: UIViewController {
         }else{
             changColorBtn.backgroundColor = .neutral3
         }
-
     }
     @objc func textFieldChanged(_ sender: Any){
         validateInput()
@@ -83,12 +83,11 @@ class InformationVC: UIViewController {
             let info = Information(firstName: firstName, lastName: lastName, gender: genderTitle, height: heightValue, weight: weightValue, bmi: bmi, fullName: fullName)
             print(info.height)
             print(info.bmi)
-//            delegate?.update(info)
-            onChangeResult?(info)
+            delegate?.update(info)
+//            onChangeResult?(info)
             print(info)
             navigationController?.popViewController(animated: true)
         }
-        
     }
     
     /*

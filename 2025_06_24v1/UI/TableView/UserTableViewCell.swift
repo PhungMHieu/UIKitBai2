@@ -37,3 +37,15 @@ class UserTableViewCell: UITableViewCell {
         name.text = "\(data.fullName)"
     }
 }
+//extension ProfileVC: InformationDelegate{
+//    func update(_ result: Information) {
+////        print("da nhan duoc thong tin update")
+//        fullName.text = result.fullName
+//        
+//        gender.text = result.gender
+////        age.text = String(result.weight)
+//        height.text = String(result.height)
+//        weight.text = String(result.weight)
+//        bmi.text = String(Int(result.bmi))
+//    }
+//}
